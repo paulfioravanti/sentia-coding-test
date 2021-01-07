@@ -1,0 +1,181 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+vader:
+  prefix: Darth
+  first_name: Vader
+  last_name:
+  suffix:
+  species: HUMAN
+  gender: MALE
+  weapon: LIGHTSABER
+  vehicle: TIEFIGHTER
+
+chewbacca:
+  prefix:
+  first_name: Chewbacca
+  last_name:
+  suffix:
+  species: WOOKIE
+  gender: MALE
+  weapon: BOWCASTER
+  vehicle: MILLENIUM_FALCON
+
+yoda:
+  prefix:
+  first_name: Yoda
+  last_name:
+  suffix:
+  species: UNKNOWN
+  gender: MALE
+  weapon: LIGHTSABER
+  vehicle:
+
+palpatine:
+  prefix:
+  first_name: Sheev
+  last_name: Palpatine
+  suffix:
+  species: HUMAN
+  gender: MALE
+  weapon: LIGHTSABER
+  vehicle:
+
+leia:
+  prefix: Princess
+  first_name: Leia
+  last_name:
+  suffix:
+  species: HUMAN
+  gender: FEMALE
+  weapon: BLASTER_PISTOL
+  vehicle:
+
+jabba:
+  prefix:
+  first_name: Jabba
+  last_name:
+  suffix: The Hutt
+  species: HUMAN
+  gender: FEMALE
+  weapon: BLASTER_PISTOL
+  vehicle: JABBAS_SAIL_BARGE
+
+kylo:
+  prefix:
+  first_name: Kylo
+  last_name:
+  suffix: Ren
+  species: HUMAN
+  gender: MALE
+  weapon: LIGHTSABER
+  vehicle:
+
+obiwan:
+  prefix:
+  first_name: Obi-Wan
+  last_name: Kenobi
+  suffix:
+  species: HUMAN
+  gender: MALE
+  weapon: LIGHTSABER
+  vehicle: JEDI_STARFIGHTER
+
+luke:
+  prefix:
+  first_name: Luke
+  last_name: Skywalker
+  suffix:
+  species: HUMAN
+  gender: MALE
+  weapon: LIGHTSABER
+  vehicle: XWING_STARFIGHTER
+
+jarjar:
+  prefix:
+  first_name: Jar Jar
+  last_name: Binks
+  suffix:
+  species: GUNGAN
+  gender: MALE
+  weapon: ENERGY_BALL
+  vehicle: GUNGAN_BONGO_SUBMARINE
+
+r2d2:
+  prefix:
+  first_name: R2-D2
+  last_name:
+  suffix:
+  species: ASTROMECH_DROID
+  gender: OTHER
+  weapon:
+  vehicle: XWING_STARFIGHTER
+
+han:
+  prefix:
+  first_name: Han
+  last_name: Solo
+  suffix:
+  species: HUMAN
+  gender: MALE
+  weapon: BLASTER_PISTOL
+  vehicle: MILLENIUM_FALCON
+
+boba:
+  prefix:
+  first_name: Boba
+  last_name: Fett
+  suffix:
+  species: HUMAN
+  gender: MALE
+  weapon: BLASTER
+  vehicle: SLAVE_ONE
+
+rey:
+  prefix:
+  first_name: Rey
+  last_name: Fett
+  suffix:
+  species: HUMAN
+  gender: FEMALE
+  weapon: LIGHTSABER
+  vehicle: REYS_SPEEDER
+
+padme:
+  prefix:
+  first_name: Padme
+  last_name: Amidala
+  suffix:
+  species: HUMAN
+  gender: FEMALE
+  weapon:
+  vehicle: NABOO_N1_STARFIGHTER
+
+c3po:
+  prefix:
+  first_name: C-3PO
+  last_name:
+  suffix:
+  species: PROTOCOL_DROID
+  gender: OTHER
+  weapon:
+  vehicle:
+
+mace:
+  prefix:
+  first_name: Mace
+  last_name: Windu
+  suffix:
+  species: HUMAN
+  gender: MALE
+  weapon: LIGHTSABER
+  vehicle:
+
+lando:
+  prefix:
+  first_name: Lando
+  last_name: Calrissian
+  suffix:
+  species: HUMAN
+  gender: MALE
+  weapon: BLASTER_PISTOL
+  vehicle: MILLENIUM_FALCON
