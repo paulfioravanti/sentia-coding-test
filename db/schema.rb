@@ -17,9 +17,9 @@ ActiveRecord::Schema.define(version: 2021_01_07_052346) do
 
   # These are custom enum types that must be created before they can be used in the schema definition
   create_enum "affiliation_name", ["First Order", "Galactic Republic", "Gungan Grand Army", "Hutt Clan", "Jedi Order", "Rebel Alliance", "Sith", "The Resistance"]
-  create_enum "location_name", ["Alderaan", "Chandrila", "Cloud City", "Corellia", "Death Star", "Haruun Kal", "Jakku", "Kamino", "Kashyyk", "Naboo", "Stewjon", "Tatooine", "Yoda's Hutt"]
+  create_enum "location_name", ["Alderaan", "Chandrila", "Cloud City", "Corellia", "Death Star", "Haruun Kal", "Jakku", "Kamino", "Kashyyk", "Naboo", "Stewjon", "Tatooine", "Yoda's Hut"]
   create_enum "person_gender", ["Male", "Female", "Other"]
-  create_enum "person_species", ["Astromech Droid", "Gungan", "Human", "Protocol Droid", "Unknown", "Wookie"]
+  create_enum "person_species", ["Astromech Droid", "Gungan", "Human", "Hutt", "Protocol Droid", "Unknown", "Wookie"]
   create_enum "person_vehicle", ["Gungan Bongo Submarine", "Jabba's Sale Barge", "Jedi Starfighter", "Millennium Falcon", "Naboo N-1 Starfighter", "Rey's Speeder", "Slave 1", "Tiefighter", "X-wing Starfighter"]
   create_enum "person_weapon", ["Blaster", "Blaster Pistol", "Bowcaster", "Energy Ball", "Lightsaber"]
 
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 2021_01_07_052346) do
     t.enum "vehicle", as: "person_vehicle"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["first_name", "species", "gender"], name: "index_people_on_first_name_and_species_and_gender", unique: true
   end
 
   create_table "residences", force: :cascade do |t|

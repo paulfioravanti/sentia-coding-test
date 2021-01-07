@@ -1,5 +1,7 @@
 class CreateLocations < ActiveRecord::Migration[6.1]
   def change
+    # NOTE: Double single quotes are for escaping single quotes in Postgres.
+    # REF: https://stackoverflow.com/questions/12316953/insert-text-with-single-quotes-in-postgresql
     create_enum(
       :location_name,
       [
@@ -15,7 +17,7 @@ class CreateLocations < ActiveRecord::Migration[6.1]
         "Naboo",
         "Stewjon",
         "Tatooine",
-        "Yoda''s Hutt"
+        "Yoda''s Hut"
       ]
     )
 

@@ -6,6 +6,7 @@ class CreatePeople < ActiveRecord::Migration[6.1]
         "Astromech Droid",
         "Gungan",
         "Human",
+        "Hutt",
         "Protocol Droid",
         "Unknown",
         "Wookie"
@@ -16,6 +17,8 @@ class CreatePeople < ActiveRecord::Migration[6.1]
       :person_weapon,
       ["Blaster", "Blaster Pistol", "Bowcaster", "Energy Ball", "Lightsaber"]
     )
+    # NOTE: Double single quotes are for escaping single quotes in Postgres.
+    # REF: https://stackoverflow.com/questions/12316953/insert-text-with-single-quotes-in-postgresql
     create_enum(
       :person_vehicle,
       [
@@ -43,5 +46,7 @@ class CreatePeople < ActiveRecord::Migration[6.1]
 
       t.timestamps
     end
+
+    add_index :people, [:first_name, :species, :gender], unique: true
   end
 end
