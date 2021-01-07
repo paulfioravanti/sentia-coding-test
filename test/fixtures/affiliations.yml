@@ -1,0 +1,18 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+first_order:
+  name: FIRST_ORDER
+galactic_republic:
+  name: GALACTIC_REPUBLIC
+gungan_grand_army:
+  name: GUNGAN_GRAND_ARMY
+hutt_clan:
+  name: HUTT_CLAN
+jedi_order:
+  name: JEDI_ORDER
+rebel_alliance:
+  name: REBEL_ALLIANCE
+sith:
+  name: SITH
+the_resistance:
+  name: THE_RESISTANCE

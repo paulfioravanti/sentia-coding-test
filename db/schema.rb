@@ -10,17 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_07_040828) do
+ActiveRecord::Schema.define(version: 2021_01_07_042030) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   # These are custom enum types that must be created before they can be used in the schema definition
+  create_enum "affiliation_name", ["FIRST_ORDER", "GALACTIC_REPUBLIC", "GUNGAN_GRAND_ARMY", "HUTT_CLAN", "JEDI_ORDER", "REBEL_ALLIANCE", "SITH", "THE_RESISTANCE"]
   create_enum "location_name", ["ALDERAAN", "CHANDRILA", "CLOUD_CITY", "CORELLIA", "DEATH_STAR", "HARUUN_KAL", "JAKKU", "KAMINO", "KASHYYK", "NABOO", "STEWJON", "TATOOINE", "YODAS_HUT"]
   create_enum "person_gender", ["MALE", "FEMALE", "OTHER"]
   create_enum "person_species", ["ASTROMECH_DROID", "GUNGAN", "HUMAN", "PROTOCOL_DROID", "UNKNOWN", "WOOKIE"]
   create_enum "person_vehicle", ["GUNGAN_BONGO_SUBMARINE", "JABBAS_SAIL_BARGE", "JEDI_STARFIGHTER", "MILLENIUM_FALCON", "NABOO_N1_STARFIGHTER", "REYS_SPEEDER", "SLAVE_ONE", "TIEFIGHTER", "XWING_STARFIGHTER"]
   create_enum "person_weapon", ["BLASTER", "BLASTER_PISTOL", "BOWCASTER", "ENERGY_BALL", "LIGHTSABER"]
+
+  create_table "affiliations", force: :cascade do |t|
+    t.enum "name", null: false, as: "affiliation_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_affiliations_on_name", unique: true
+  end
 
   create_table "locations", force: :cascade do |t|
     t.enum "name", null: false, as: "location_name"
