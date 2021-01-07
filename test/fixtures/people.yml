@@ -5,10 +5,10 @@ vader:
   first_name: Vader
   last_name:
   suffix:
-  species: HUMAN
-  gender: MALE
-  weapon: LIGHTSABER
-  vehicle: TIEFIGHTER
+  species: Human
+  gender: Male
+  weapon: Lightsaber
+  vehicle: Tiefighter
   affiliations: sith
   locations: death_star, tatooine
 
@@ -17,10 +17,10 @@ chewbacca:
   first_name: Chewbacca
   last_name:
   suffix:
-  species: WOOKIE
-  gender: MALE
-  weapon: BOWCASTER
-  vehicle: MILLENIUM_FALCON
+  species: Wookie
+  gender: Male
+  weapon: Bowcaster
+  vehicle: Millennium Falcon
   affiliations: rebel_alliance
   locations: kashyyk
 
@@ -29,9 +29,9 @@ yoda:
   first_name: Yoda
   last_name:
   suffix:
-  species: UNKNOWN
-  gender: MALE
-  weapon: LIGHTSABER
+  species: Unknown
+  gender: Male
+  weapon: Lightsaber
   vehicle:
   affiliations: jedi_order
   locations: yodas_hut
@@ -41,9 +41,9 @@ palpatine:
   first_name: Sheev
   last_name: Palpatine
   suffix:
-  species: HUMAN
-  gender: MALE
-  weapon: LIGHTSABER
+  species: Human
+  gender: Male
+  weapon: Lightsaber
   vehicle:
   affiliations: galactic_republic
   locations: naboo
@@ -53,9 +53,9 @@ leia:
   first_name: Leia
   last_name:
   suffix:
-  species: HUMAN
-  gender: FEMALE
-  weapon: BLASTER_PISTOL
+  species: Human
+  gender: Female
+  weapon: Blaster Pistol
   vehicle:
   affiliations: galactic_republic, rebel_alliance
   locations: alderaan
@@ -65,10 +65,10 @@ jabba:
   first_name: Jabba
   last_name:
   suffix: The Hutt
-  species: HUMAN
-  gender: FEMALE
-  weapon: BLASTER_PISTOL
-  vehicle: JABBAS_SAIL_BARGE
+  species: Human
+  gender: Female
+  weapon: Blaster Pistol
+  vehicle: Jabba's Sale Barge
   affiliations: hutt_clan
   locations: tatooine
 
@@ -77,9 +77,9 @@ kylo:
   first_name: Kylo
   last_name:
   suffix: Ren
-  species: HUMAN
-  gender: MALE
-  weapon: LIGHTSABER
+  species: Human
+  gender: Male
+  weapon: Lightsaber
   vehicle:
   affiliations: first_order
   locations: chandrilla
@@ -89,10 +89,10 @@ obiwan:
   first_name: Obi-Wan
   last_name: Kenobi
   suffix:
-  species: HUMAN
-  gender: MALE
-  weapon: LIGHTSABER
-  vehicle: JEDI_STARFIGHTER
+  species: Human
+  gender: Male
+  weapon: Lightsaber
+  vehicle: Jedi Starfighter
   affiliations: jedi_order
   locations: stewjon
 
@@ -101,10 +101,10 @@ luke:
   first_name: Luke
   last_name: Skywalker
   suffix:
-  species: HUMAN
-  gender: MALE
-  weapon: LIGHTSABER
-  vehicle: XWING_STARFIGHTER
+  species: Human
+  gender: Male
+  weapon: Lightsaber
+  vehicle: X-wing Starfighter
   affiliations: jedi_order, rebel_alliance
   locations: tatooine
 
@@ -113,10 +113,10 @@ jarjar:
   first_name: Jar Jar
   last_name: Binks
   suffix:
-  species: GUNGAN
-  gender: MALE
-  weapon: ENERGY_BALL
-  vehicle: GUNGAN_BONGO_SUBMARINE
+  species: Gungan
+  gender: Male
+  weapon: Energy Ball
+  vehicle: Gungan Bongo Submarine
   affiliations: gungan_grand_army, galactic_republic
   locations: naboo
 
@@ -125,10 +125,10 @@ r2d2:
   first_name: R2-D2
   last_name:
   suffix:
-  species: ASTROMECH_DROID
-  gender: OTHER
+  species: Astromech Droid
+  gender: Other
   weapon:
-  vehicle: XWING_STARFIGHTER
+  vehicle: X-wing Starfighter
   affiliations: rebel_alliance, galactic_republic
   locations: naboo
 
@@ -137,10 +137,10 @@ han:
   first_name: Han
   last_name: Solo
   suffix:
-  species: HUMAN
-  gender: MALE
-  weapon: BLASTER_PISTOL
-  vehicle: MILLENIUM_FALCON
+  species: Human
+  gender: Male
+  weapon: Blaster Pistol
+  vehicle: Millennium Falcon
   affiliations: rebel_alliance
   locations: corellia
 
@@ -149,10 +149,10 @@ boba:
   first_name: Boba
   last_name: Fett
   suffix:
-  species: HUMAN
-  gender: MALE
-  weapon: BLASTER
-  vehicle: SLAVE_ONE
+  species: Human
+  gender: Male
+  weapon: Blaster
+  vehicle: "Slave 1"
   affiliations:
   locations: kamino
 
@@ -161,10 +161,10 @@ rey:
   first_name: Rey
   last_name: Fett
   suffix:
-  species: HUMAN
-  gender: FEMALE
-  weapon: LIGHTSABER
-  vehicle: REYS_SPEEDER
+  species: Human
+  gender: Female
+  weapon: Lightsaber
+  vehicle: Rey's Speeder
   affiliations: jedi_order
   locations: jakku
 
@@ -173,10 +173,10 @@ padme:
   first_name: Padme
   last_name: Amidala
   suffix:
-  species: HUMAN
-  gender: FEMALE
+  species: Human
+  gender: Female
   weapon:
-  vehicle: NABOO_N1_STARFIGHTER
+  vehicle: Naboo N-1 Starfighter
   affiliations: galactic_republic
   locations: naboo
 
@@ -185,8 +185,8 @@ c3po:
   first_name: C-3PO
   last_name:
   suffix:
-  species: PROTOCOL_DROID
-  gender: OTHER
+  species: Protocol Droid
+  gender: Other
   weapon:
   vehicle:
   affiliations: the_resistance
@@ -197,9 +197,9 @@ mace:
   first_name: Mace
   last_name: Windu
   suffix:
-  species: HUMAN
-  gender: MALE
-  weapon: LIGHTSABER
+  species: Human
+  gender: Male
+  weapon: Lightsaber
   vehicle:
   affiliations: jedi_order
   locations: haruun_kal
@@ -209,9 +209,9 @@ lando:
   first_name: Lando
   last_name: Calrissian
   suffix:
-  species: HUMAN
-  gender: MALE
-  weapon: BLASTER_PISTOL
-  vehicle: MILLENIUM_FALCON
+  species: Human
+  gender: Male
+  weapon: Blaster Pistol
+  vehicle: Millennium Falcon
   affiliations: rebel_alliance
   locations: cloud_city

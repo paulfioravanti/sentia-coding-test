@@ -1,28 +1,28 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 alderaan:
-  name: ALDERAAN
-chandrilla:
-  name: CHANDRILA
+  name: Alderaan
+chandrila:
+  name: Chandrila
 cloud_city:
-  name: CLOUD_CITY
+  name: Cloud City
 corellia:
-  name: CORELLIA
+  name: Corellia
 death_star:
-  name: DEATH_STAR
+  name: Death Star
 haruun_kal:
-  name: HARUUN_KAL
+  name: Haruun Kal
 jakku:
-  name: JAKKU
+  name: Jakku
 kamino:
-  name: KAMINO
+  name: Kamino
 kashyyk:
-  name: KASHYYK
+  name: Kashyyk
 naboo:
-  name: NABOO
+  name: Naboo
 stewjon:
-  name: STEWJON
+  name: Stewjon
 tatooine:
-  name: TATOOINE
-yodas_hut:
-  name: YODAS_HUT
+  name: Tatooine
+yodas_hutt:
+  name: Yoda's Hutt

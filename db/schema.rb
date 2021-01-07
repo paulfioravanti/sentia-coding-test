@@ -16,12 +16,12 @@ ActiveRecord::Schema.define(version: 2021_01_07_052346) do
   enable_extension "plpgsql"
 
   # These are custom enum types that must be created before they can be used in the schema definition
-  create_enum "affiliation_name", ["FIRST_ORDER", "GALACTIC_REPUBLIC", "GUNGAN_GRAND_ARMY", "HUTT_CLAN", "JEDI_ORDER", "REBEL_ALLIANCE", "SITH", "THE_RESISTANCE"]
-  create_enum "location_name", ["ALDERAAN", "CHANDRILA", "CLOUD_CITY", "CORELLIA", "DEATH_STAR", "HARUUN_KAL", "JAKKU", "KAMINO", "KASHYYK", "NABOO", "STEWJON", "TATOOINE", "YODAS_HUT"]
-  create_enum "person_gender", ["MALE", "FEMALE", "OTHER"]
-  create_enum "person_species", ["ASTROMECH_DROID", "GUNGAN", "HUMAN", "PROTOCOL_DROID", "UNKNOWN", "WOOKIE"]
-  create_enum "person_vehicle", ["GUNGAN_BONGO_SUBMARINE", "JABBAS_SAIL_BARGE", "JEDI_STARFIGHTER", "MILLENIUM_FALCON", "NABOO_N1_STARFIGHTER", "REYS_SPEEDER", "SLAVE_ONE", "TIEFIGHTER", "XWING_STARFIGHTER"]
-  create_enum "person_weapon", ["BLASTER", "BLASTER_PISTOL", "BOWCASTER", "ENERGY_BALL", "LIGHTSABER"]
+  create_enum "affiliation_name", ["First Order", "Galactic Republic", "Gungan Grand Army", "Hutt Clan", "Jedi Order", "Rebel Alliance", "Sith", "The Resistance"]
+  create_enum "location_name", ["Alderaan", "Chandrila", "Cloud City", "Corellia", "Death Star", "Haruun Kal", "Jakku", "Kamino", "Kashyyk", "Naboo", "Stewjon", "Tatooine", "Yoda's Hutt"]
+  create_enum "person_gender", ["Male", "Female", "Other"]
+  create_enum "person_species", ["Astromech Droid", "Gungan", "Human", "Protocol Droid", "Unknown", "Wookie"]
+  create_enum "person_vehicle", ["Gungan Bongo Submarine", "Jabba's Sale Barge", "Jedi Starfighter", "Millennium Falcon", "Naboo N-1 Starfighter", "Rey's Speeder", "Slave 1", "Tiefighter", "X-wing Starfighter"]
+  create_enum "person_weapon", ["Blaster", "Blaster Pistol", "Bowcaster", "Energy Ball", "Lightsaber"]
 
   create_table "affiliations", force: :cascade do |t|
     t.enum "name", null: false, as: "affiliation_name"

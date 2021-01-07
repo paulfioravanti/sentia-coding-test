@@ -2,16 +2,16 @@ class CreateAffiliations < ActiveRecord::Migration[6.1]
   def change
     create_enum(
       :affiliation_name,
-      %w(
-        FIRST_ORDER
-        GALACTIC_REPUBLIC
-        GUNGAN_GRAND_ARMY
-        HUTT_CLAN
-        JEDI_ORDER
-        REBEL_ALLIANCE
-        SITH
-        THE_RESISTANCE
-      )
+      [
+        "First Order",
+        "Galactic Republic",
+        "Gungan Grand Army",
+        "Hutt Clan",
+        "Jedi Order",
+        "Rebel Alliance",
+        "Sith",
+        "The Resistance"
+      ]
     )
 
     create_table :affiliations do |t|

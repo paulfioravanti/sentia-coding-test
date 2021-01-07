@@ -2,26 +2,33 @@ class CreatePeople < ActiveRecord::Migration[6.1]
   def change
     create_enum(
       :person_species,
-      %w(ASTROMECH_DROID GUNGAN HUMAN PROTOCOL_DROID UNKNOWN WOOKIE)
+      [
+        "Astromech Droid",
+        "Gungan",
+        "Human",
+        "Protocol Droid",
+        "Unknown",
+        "Wookie"
+      ]
     )
-    create_enum(:person_gender, %w(MALE FEMALE OTHER))
+    create_enum(:person_gender, %w(Male Female Other))
     create_enum(
       :person_weapon,
-      %w(BLASTER BLASTER_PISTOL BOWCASTER ENERGY_BALL LIGHTSABER)
+      ["Blaster", "Blaster Pistol", "Bowcaster", "Energy Ball", "Lightsaber"]
     )
     create_enum(
       :person_vehicle,
-      %w(
-        GUNGAN_BONGO_SUBMARINE
-        JABBAS_SAIL_BARGE
-        JEDI_STARFIGHTER
-        MILLENIUM_FALCON
-        NABOO_N1_STARFIGHTER
-        REYS_SPEEDER
-        SLAVE_ONE
-        TIEFIGHTER
-        XWING_STARFIGHTER
-      )
+      [
+        "Gungan Bongo Submarine",
+        "Jabba''s Sale Barge",
+        "Jedi Starfighter",
+        "Millennium Falcon",
+        "Naboo N-1 Starfighter",
+        "Rey''s Speeder",
+        "Slave 1",
+        "Tiefighter",
+        "X-wing Starfighter"
+      ]
     )
 
     create_table :people do |t|

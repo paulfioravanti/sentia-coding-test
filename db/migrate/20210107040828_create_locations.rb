@@ -2,21 +2,21 @@ class CreateLocations < ActiveRecord::Migration[6.1]
   def change
     create_enum(
       :location_name,
-      %w(
-        ALDERAAN
-        CHANDRILA
-        CLOUD_CITY
-        CORELLIA
-        DEATH_STAR
-        HARUUN_KAL
-        JAKKU
-        KAMINO
-        KASHYYK
-        NABOO
-        STEWJON
-        TATOOINE
-        YODAS_HUT
-      )
+      [
+        "Alderaan",
+        "Chandrila",
+        "Cloud City",
+        "Corellia",
+        "Death Star",
+        "Haruun Kal",
+        "Jakku",
+        "Kamino",
+        "Kashyyk",
+        "Naboo",
+        "Stewjon",
+        "Tatooine",
+        "Yoda''s Hutt"
+      ]
     )
 
     create_table :locations do |t|
