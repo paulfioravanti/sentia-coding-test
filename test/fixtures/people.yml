@@ -9,6 +9,7 @@ vader:
   gender: MALE
   weapon: LIGHTSABER
   vehicle: TIEFIGHTER
+  affiliations: sith
 
 chewbacca:
   prefix:
@@ -19,6 +20,7 @@ chewbacca:
   gender: MALE
   weapon: BOWCASTER
   vehicle: MILLENIUM_FALCON
+  affiliations: rebel_alliance
 
 yoda:
   prefix:
@@ -29,6 +31,7 @@ yoda:
   gender: MALE
   weapon: LIGHTSABER
   vehicle:
+  affiliations: jedi_order
 
 palpatine:
   prefix:
@@ -39,6 +42,7 @@ palpatine:
   gender: MALE
   weapon: LIGHTSABER
   vehicle:
+  affiliations: galactic_republic
 
 leia:
   prefix: Princess
@@ -49,6 +53,7 @@ leia:
   gender: FEMALE
   weapon: BLASTER_PISTOL
   vehicle:
+  affiliations: galactic_republic, rebel_alliance
 
 jabba:
   prefix:
@@ -59,6 +64,7 @@ jabba:
   gender: FEMALE
   weapon: BLASTER_PISTOL
   vehicle: JABBAS_SAIL_BARGE
+  affiliations: hutt_clan
 
 kylo:
   prefix:
@@ -69,6 +75,7 @@ kylo:
   gender: MALE
   weapon: LIGHTSABER
   vehicle:
+  affiliations: first_order
 
 obiwan:
   prefix:
@@ -79,6 +86,7 @@ obiwan:
   gender: MALE
   weapon: LIGHTSABER
   vehicle: JEDI_STARFIGHTER
+  affiliations: jedi_order
 
 luke:
   prefix:
@@ -89,6 +97,7 @@ luke:
   gender: MALE
   weapon: LIGHTSABER
   vehicle: XWING_STARFIGHTER
+  affiliations: jedi_order, rebel_alliance
 
 jarjar:
   prefix:
@@ -99,6 +108,7 @@ jarjar:
   gender: MALE
   weapon: ENERGY_BALL
   vehicle: GUNGAN_BONGO_SUBMARINE
+  affiliations: gungan_grand_army, galactic_republic
 
 r2d2:
   prefix:
@@ -109,6 +119,7 @@ r2d2:
   gender: OTHER
   weapon:
   vehicle: XWING_STARFIGHTER
+  affiliations: rebel_alliance, galactic_republic
 
 han:
   prefix:
@@ -119,6 +130,7 @@ han:
   gender: MALE
   weapon: BLASTER_PISTOL
   vehicle: MILLENIUM_FALCON
+  affiliations: rebel_alliance
 
 boba:
   prefix:
@@ -129,6 +141,7 @@ boba:
   gender: MALE
   weapon: BLASTER
   vehicle: SLAVE_ONE
+  affiliations:
 
 rey:
   prefix:
@@ -139,6 +152,7 @@ rey:
   gender: FEMALE
   weapon: LIGHTSABER
   vehicle: REYS_SPEEDER
+  affiliations: jedi_order
 
 padme:
   prefix:
@@ -149,6 +163,7 @@ padme:
   gender: FEMALE
   weapon:
   vehicle: NABOO_N1_STARFIGHTER
+  affiliations: galactic_republic
 
 c3po:
   prefix:
@@ -159,6 +174,7 @@ c3po:
   gender: OTHER
   weapon:
   vehicle:
+  affiliations: the_resistance
 
 mace:
   prefix:
@@ -169,6 +185,7 @@ mace:
   gender: MALE
   weapon: LIGHTSABER
   vehicle:
+  affiliations: jedi_order
 
 lando:
   prefix:
@@ -179,3 +196,4 @@ lando:
   gender: MALE
   weapon: BLASTER_PISTOL
   vehicle: MILLENIUM_FALCON
+  affiliations: rebel_alliance
