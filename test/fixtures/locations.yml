@@ -1,0 +1,28 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+alderaan:
+  name: ALDERAAN
+chandrilla:
+  name: CHANDRILA
+cloud_city:
+  name: CLOUD_CITY
+corellia:
+  name: CORELLIA
+death_star:
+  name: DEATH_STAR
+haruun_kal:
+  name: HARUUN_KAL
+jakku:
+  name: JAKKU
+kamino:
+  name: KAMINO
+kashyyk:
+  name: KASHYYK
+naboo:
+  name: NABOO
+stewjon:
+  name: STEWJON
+tatooine:
+  name: TATOOINE
+yodas_hut:
+  name: YODAS_HUT
