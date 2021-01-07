@@ -10,6 +10,7 @@ vader:
   weapon: LIGHTSABER
   vehicle: TIEFIGHTER
   affiliations: sith
+  locations: death_star, tatooine
 
 chewbacca:
   prefix:
@@ -21,6 +22,7 @@ chewbacca:
   weapon: BOWCASTER
   vehicle: MILLENIUM_FALCON
   affiliations: rebel_alliance
+  locations: kashyyk
 
 yoda:
   prefix:
@@ -32,6 +34,7 @@ yoda:
   weapon: LIGHTSABER
   vehicle:
   affiliations: jedi_order
+  locations: yodas_hut
 
 palpatine:
   prefix:
@@ -43,6 +46,7 @@ palpatine:
   weapon: LIGHTSABER
   vehicle:
   affiliations: galactic_republic
+  locations: naboo
 
 leia:
   prefix: Princess
@@ -54,6 +58,7 @@ leia:
   weapon: BLASTER_PISTOL
   vehicle:
   affiliations: galactic_republic, rebel_alliance
+  locations: alderaan
 
 jabba:
   prefix:
@@ -65,6 +70,7 @@ jabba:
   weapon: BLASTER_PISTOL
   vehicle: JABBAS_SAIL_BARGE
   affiliations: hutt_clan
+  locations: tatooine
 
 kylo:
   prefix:
@@ -76,6 +82,7 @@ kylo:
   weapon: LIGHTSABER
   vehicle:
   affiliations: first_order
+  locations: chandrilla
 
 obiwan:
   prefix:
@@ -87,6 +94,7 @@ obiwan:
   weapon: LIGHTSABER
   vehicle: JEDI_STARFIGHTER
   affiliations: jedi_order
+  locations: stewjon
 
 luke:
   prefix:
@@ -98,6 +106,7 @@ luke:
   weapon: LIGHTSABER
   vehicle: XWING_STARFIGHTER
   affiliations: jedi_order, rebel_alliance
+  locations: tatooine
 
 jarjar:
   prefix:
@@ -109,6 +118,7 @@ jarjar:
   weapon: ENERGY_BALL
   vehicle: GUNGAN_BONGO_SUBMARINE
   affiliations: gungan_grand_army, galactic_republic
+  locations: naboo
 
 r2d2:
   prefix:
@@ -120,6 +130,7 @@ r2d2:
   weapon:
   vehicle: XWING_STARFIGHTER
   affiliations: rebel_alliance, galactic_republic
+  locations: naboo
 
 han:
   prefix:
@@ -131,6 +142,7 @@ han:
   weapon: BLASTER_PISTOL
   vehicle: MILLENIUM_FALCON
   affiliations: rebel_alliance
+  locations: corellia
 
 boba:
   prefix:
@@ -142,6 +154,7 @@ boba:
   weapon: BLASTER
   vehicle: SLAVE_ONE
   affiliations:
+  locations: kamino
 
 rey:
   prefix:
@@ -153,6 +166,7 @@ rey:
   weapon: LIGHTSABER
   vehicle: REYS_SPEEDER
   affiliations: jedi_order
+  locations: jakku
 
 padme:
   prefix:
@@ -164,6 +178,7 @@ padme:
   weapon:
   vehicle: NABOO_N1_STARFIGHTER
   affiliations: galactic_republic
+  locations: naboo
 
 c3po:
   prefix:
@@ -175,6 +190,7 @@ c3po:
   weapon:
   vehicle:
   affiliations: the_resistance
+  locations: tatooine
 
 mace:
   prefix:
@@ -186,6 +202,7 @@ mace:
   weapon: LIGHTSABER
   vehicle:
   affiliations: jedi_order
+  locations: haruun_kal
 
 lando:
   prefix:
@@ -197,3 +214,4 @@ lando:
   weapon: BLASTER_PISTOL
   vehicle: MILLENIUM_FALCON
   affiliations: rebel_alliance
+  locations: cloud_city
