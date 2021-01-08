@@ -4,6 +4,7 @@ module DataImporter
   module_function
 
   def import(file)
+    Person.delete_all
     file.rewind
     CSV.parse(file.read, headers: true).each(&method(:process_row))
   end
