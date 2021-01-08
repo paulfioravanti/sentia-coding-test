@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2021_01_07_052346) do
     t.bigint "person_id"
     t.bigint "affiliation_id"
     t.index ["affiliation_id"], name: "index_loyalties_on_affiliation_id"
+    t.index ["person_id", "affiliation_id"], name: "index_loyalties_on_person_id_and_affiliation_id", unique: true
     t.index ["person_id"], name: "index_loyalties_on_person_id"
   end
 
@@ -62,6 +63,7 @@ ActiveRecord::Schema.define(version: 2021_01_07_052346) do
     t.bigint "person_id"
     t.bigint "location_id"
     t.index ["location_id"], name: "index_residences_on_location_id"
+    t.index ["person_id", "location_id"], name: "index_residences_on_person_id_and_location_id", unique: true
     t.index ["person_id"], name: "index_residences_on_person_id"
   end
 

@@ -23,54 +23,41 @@ module DataImporter
 
   def import(file)
     file.rewind
-    CSV.parse(file.read, headers: false).each(&method(:process_row))
+    CSV.parse(file.read, headers: true).each(&method(:process_row))
   end
 
   # NOTE: By necessity, the method has knowledge about the CSV fields and the
   # order of the columns.
   def process_row(row)
-    Rails.logger.error("Processing #{row}")
+    Rails.logger.info("Processing #{row}")
     # NOTE: A Person without an affiliation should be skipped, but we'll also
     # just ensure we have values for *all* the required fields.
-    if row.first(5).any?(&:blank?)
-      Rails.logger.error("#{row} contains blank values. Skipping...")
+    if required_fields_blank?(row)
+      Rails.logger.warn("#{row} contains blank required fields. Skipping...")
       return
     end
-    name, locations, species, gender, affiliations, weapon, vehicle = row
 
-    prefix, first_name, last_name, suffix = parse_name(name)
+    prefix, first_name, last_name, suffix = parse_name(row["Name"])
 
-    gender = parse_gender(gender)
+    gender = parse_gender(row["Gender"])
     if gender.blank?
-      Rails.logger.error("#{row} has a blank gender. Skipping...")
+      Rails.logger.warn("#{row} has a blank gender. Skipping...")
       return
     end
 
-    person_enum_fields =
-      [
-        [species, VALID_SPECIES],
-        [weapon, VALID_WEAPONS],
-        [vehicle, VALID_VEHICLES],
-      ].each_with_object([], &method(:parse_enum_field))
-    # NOTE: Only need to abort if species is blank
-    if person_enum_fields.first.blank?
-      Rails.logger.error("#{person_enum_fields} has a blank species. Skipping...")
+    species, weapon, vehicle = parse_single_value_enum_fields(row)
+    if species.blank?
+      Rails.logger.warn("#{row} has a blank species. Skipping...")
       return
     end
 
-    species, weapon, vehicle = person_enum_fields
-
-    multi_enum_fields =
-      [
-        [locations.split(","), VALID_LOCATIONS],
-        [affiliations.split(","), VALID_AFFILIATIONS],
-      ].each_with_object([], &method(:parse_enum_fields))
-    if multi_enum_fields.flatten.any?(&:blank?)
-      Rails.logger.error("#{multi_enum_fields} has blank values. Skipping...")
+    locations, affiliations = parse_multi_value_enum_fields(row)
+    if [*locations, *affiliations].any?(&:blank?)
+      Rails.logger.warn(
+        "#{row} has a blank location or affiliations. Skipping..."
+      )
       return
     end
-
-    locations, affiliations = multi_enum_fields
 
     person =
       Person.create!(
@@ -85,13 +72,25 @@ module DataImporter
       )
 
     locations.each do |location|
-      person.residences.create!(location: Location.find_by(name: location))
+      person.residences.create!(
+        location: Location.find_by(name: location)
+      )
     end
     affiliations.each do |affiliation|
-      person.loyalties.create!(affiliation: Affiliation.find_by(name: affiliation))
+      person.loyalties.create!(
+        affiliation: Affiliation.find_by(name: affiliation)
+      )
     end
   end
   private_class_method :process_row
+
+  def required_fields_blank?(row)
+    row
+      .first(5)
+      .map(&:second)
+      .any?(&:blank?)
+  end
+  private_class_method :required_fields_blank?
 
   def parse_name(name)
     name_parts = name.split.map(&:upcase_first)
@@ -101,10 +100,10 @@ module DataImporter
       [nil, name, nil, nil]
     in ["Darth" | "Princess" => prefix, *rest]
       [prefix, *rest]
-    in [*first_names, "Ren"]
-      [nil, first_names.join(" "), nil, "Ren"]
-    in [first_name, "The", "Hutt"]
-      [nil, first_name, nil, "The Hutt"]
+    in [*first_names, "Ren" => suffix]
+      [nil, first_names.join(" "), nil, suffix]
+    in [*first_names, "The", "Hutt"]
+      [nil, first_names.join(" "), nil, "The Hutt"]
     else
       *first_names, last_name = name_parts
       [nil, first_names.join(" "), last_name, nil]
@@ -126,8 +125,30 @@ module DataImporter
   end
   private_class_method :parse_gender
 
+  def parse_single_value_enum_fields(row)
+    enum_fields =
+      [
+        [row["Species"], VALID_SPECIES],
+        [row["Weapon"], VALID_WEAPONS],
+        [row["Vehicle"], VALID_VEHICLES],
+      ]
+
+    enum_fields.each_with_object([], &method(:parse_enum_field))
+  end
+  private_class_method :parse_single_value_enum_fields
+
+  def parse_multi_value_enum_fields(row)
+    enum_fields =
+      [
+        [row["Location"].split(","), VALID_LOCATIONS],
+        [row["Affiliations"].split(","), VALID_AFFILIATIONS],
+      ]
+
+    enum_fields.each_with_object([], &method(:parse_enum_fields))
+  end
+  private_class_method :parse_multi_value_enum_fields
+
   def parse_enum_fields((fields, valid_enums), acc)
-    Rails.logger.info("fields: #{fields}, valid_enums: #{valid_enums}")
     parsed_fields =
       fields
         .each
@@ -139,9 +160,7 @@ module DataImporter
   private_class_method :parse_enum_fields
 
   def parse_enum_field((field, valid_enums), acc)
-    Rails.logger.info("field: #{field}, valid_enums: #{valid_enums}")
     munged_field = munge_field(field)
-    Rails.logger.info("munged_field: #{munged_field}")
     acc << (valid_enums.include?(munged_field) ? munged_field : nil)
   end
   private_class_method :parse_enum_field
