@@ -5,37 +5,8 @@
         People Data
       </h3>
     </div>
-    <div class="flex-1 flex items-center justify-center px-2 lg:ml-6 lg:justify-end">
-      <%= form_tag root_path, method: :get, id: "people-search" do %>
-        <%= hidden_field_tag :direction, params[:direction] %>
-        <%= hidden_field_tag :sort, params[:sort] %>
-        <div class="max-w-lg w-full lg:max-w-xs">
-          <label for="search" class="sr-only">Search</label>
-          <div class="relative">
-            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <!-- Heroicon name: search -->
-              <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
-              </svg>
-            </div>
-            <input id="search" name="search" class="shadow block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Search" type="search">
-          </div>
-        </div>
-      <% end %>
-    </div>
-    <div class="ml-4 flex-shrink-0">
-      <%= form_tag data_import_create_path, multipart: true do %>
-        <div class="flex w-full items-center justify-center bg-grey-lighter">
-          <label class="w-36 flex items-center px-2 py-2 bg-white text-gray-700 rounded-lg shadow tracking-wide border border-blue cursor-pointer hover:bg-indigo-500 hover:text-white">
-            <svg class="w-6 h-6" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-              <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
-            </svg>
-            <span class="px-3 mt-0 text-xs leading-normal">Import Data</span>
-            <%= file_field_tag :file, class: "hidden", onchange: "this.form.submit();" %>
-          </label>
-        </div>
-      <% end %>
-    </div>
+    <%= render "search", path: root_path, params: params %>
+    <%= render "data_import", path: data_import_create_path %>
   </div>
 </div>
 <div class="px-4 py-5 sm:p-6">
@@ -46,34 +17,34 @@
           <table class="min-w-full divide-y divide-gray-200">
             <thead class="bg-gray-50">
               <tr>
-                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th scope="col" class="person-heading">
                   <%= @people.link_to_sortable "prefix" %>
                 </th>
-                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th scope="col" class="person-heading">
                   <%= @people.link_to_sortable "first_name" %>
                 </th>
-                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th scope="col" class="person-heading">
                   <%= @people.link_to_sortable "last_name" %>
                 </th>
-                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th scope="col" class="person-heading">
                   <%= @people.link_to_sortable "suffix" %>
                 </th>
-                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th scope="col" class="person-heading">
                   Location
                 </th>
-                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th scope="col" class="person-heading">
                   <%= @people.link_to_sortable "species" %>
                 </th>
-                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th scope="col" class="person-heading">
                   <%= @people.link_to_sortable "gender" %>
                 </th>
-                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th scope="col" class="person-heading">
                   Affiliations
                 </th>
-                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th scope="col" class="person-heading">
                   <%= @people.link_to_sortable "weapon" %>
                 </th>
-                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th scope="col" class="person-heading">
                   <%= @people.link_to_sortable "vehicle" %>
                 </th>
               </tr>
@@ -81,34 +52,34 @@
             <tbody>
               <% @people.each do |person| %>
                 <tr class="<%= cycle("bg-white", "bg-gray-50") %>">
-                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                  <td class="person-data">
                     <%= person.prefix %>
                   </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                  <td class="person-data">
                     <%= person.first_name %>
                   </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                  <td class="person-data">
                     <%= person.last_name %>
                   </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                  <td class="person-data">
                     <%= person.suffix %>
                   </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  <td class="person-data">
                     <%= person.location_names %>
                   </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  <td class="person-data">
                     <%= person.species %>
                   </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  <td class="person-data">
                     <%= person.gender %>
                   </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  <td class="person-data">
                     <%= person.affiliation_names %>
                   </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  <td class="person-data">
                     <%= person.weapon %>
                   </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  <td class="person-data">
                     <%= person.vehicle %>
                   </td>
                 </tr>
