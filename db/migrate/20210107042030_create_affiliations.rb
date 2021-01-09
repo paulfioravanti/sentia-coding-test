@@ -15,7 +15,7 @@ class CreateAffiliations < ActiveRecord::Migration[6.1]
     )
 
     create_table :affiliations do |t|
-      t.enum :name, as: :affiliation_name, null: false, unique: true
+      t.enum :name, as: :affiliation_name, null: false
       t.timestamps
     end
 

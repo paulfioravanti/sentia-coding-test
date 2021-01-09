@@ -71,15 +71,13 @@ module DataImporter
         vehicle: vehicle
       )
 
-    locations.each do |location|
-      person.residences.create!(
-        location: Location.find_by(name: location)
-      )
+    locations.each do |location_name|
+      location = Location.find_or_create_by(name: location_name)
+      person.residences.create!(location: location)
     end
-    affiliations.each do |affiliation|
-      person.loyalties.create!(
-        affiliation: Affiliation.find_by(name: affiliation)
-      )
+    affiliations.each do |affiliation_name|
+      affiliation = Affiliation.find_or_create_by(name: affiliation_name)
+      person.loyalties.create!(affiliation: affiliation)
     end
   end
   private_class_method :process_row
@@ -126,11 +124,12 @@ module DataImporter
   private_class_method :parse_gender
 
   def parse_single_value_enum_fields(row)
+    species, weapon, vehicle = row.values_at("Species", "Weapon", "Vehicle")
     enum_fields =
       [
-        [row["Species"], VALID_SPECIES],
-        [row["Weapon"], VALID_WEAPONS],
-        [row["Vehicle"], VALID_VEHICLES],
+        [species, VALID_SPECIES],
+        [weapon, VALID_WEAPONS],
+        [vehicle, VALID_VEHICLES],
       ]
 
     enum_fields.each_with_object([], &method(:parse_enum_field))
@@ -138,11 +137,12 @@ module DataImporter
   private_class_method :parse_single_value_enum_fields
 
   def parse_multi_value_enum_fields(row)
+    locations, affiliations =
+      row
+        .values_at("Location", "Affiliations")
+        .map { |value| value.split(",") }
     enum_fields =
-      [
-        [row["Location"].split(","), VALID_LOCATIONS],
-        [row["Affiliations"].split(","), VALID_AFFILIATIONS],
-      ]
+      [[locations, VALID_LOCATIONS], [affiliations, VALID_AFFILIATIONS]]
 
     enum_fields.each_with_object([], &method(:parse_enum_fields))
   end

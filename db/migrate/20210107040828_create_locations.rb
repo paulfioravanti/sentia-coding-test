@@ -22,7 +22,7 @@ class CreateLocations < ActiveRecord::Migration[6.1]
     )
 
     create_table :locations do |t|
-      t.enum :name, as: :location_name, null: false, unique: true
+      t.enum :name, as: :location_name, null: false
       t.timestamps
     end
 
