@@ -35,8 +35,4 @@ class Person < ApplicationRecord
   has_many :affiliations, through: :loyalties
   has_many :residences
   has_many :locations, through: :residences
-
-  def name_parts
-    [prefix, first_name, last_name, suffix]
-  end
 end

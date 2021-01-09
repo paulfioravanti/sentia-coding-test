@@ -3,10 +3,6 @@ class PersonDecorator < Draper::Decorator
   decorates_association :locations
   decorates_association :affiliations
 
-  def full_name
-    object.name_parts.join(" ")
-  end
-
   def location_names
     object.locations.map(&:name).join(", ")
   end
