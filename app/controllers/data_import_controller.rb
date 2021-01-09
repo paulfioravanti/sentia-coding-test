@@ -1,8 +1,8 @@
 class DataImportController < ApplicationController
   def create
     DataImporter.import(params[:file])
-    redirect_to root_url, success: "Data imported successfully!"
+    redirect_to root_url, flash: { success: "Data imported successfully!" }
   rescue => error
-    redirect_to root_url, error: error.message
+    redirect_to root_url, flash: { error: error.message }
   end
 end
