@@ -37,8 +37,15 @@
         </div>
         <div class="ml-4 mt-2 flex-shrink-0">
         <%= form_tag data_import_create_path, multipart: true do %>
-          <%= file_field_tag :file  %>
-          <%= submit_tag "Import Data", class: "relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"%>
+          <div class="flex w-full items-center justify-center bg-grey-lighter">
+            <label class="w-36 flex flex-col items-center px-2 py-2 bg-white text-blue rounded-lg shadow tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue-500 hover:text-white">
+              <svg class="w-6 h-6" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+              </svg>
+              <span class="mt-0 text-base leading-normal">Import Data</span>
+              <%= file_field_tag :file, class: "hidden", onchange: "this.form.submit();" %>
+            </label>
+          </div>
         <% end %>
         </div>
       </div>
