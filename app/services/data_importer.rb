@@ -60,7 +60,7 @@ module DataImporter
     end
 
     person =
-      Person.create!(
+      Person.upsert(
         prefix: prefix,
         first_name: first_name,
         last_name: last_name,
@@ -73,11 +73,11 @@ module DataImporter
 
     locations.each do |location_name|
       location = Location.find_or_create_by(name: location_name)
-      person.residences.create!(location: location)
+      person.residences.find_or_create_by(location: location)
     end
     affiliations.each do |affiliation_name|
       affiliation = Affiliation.find_or_create_by(name: affiliation_name)
-      person.loyalties.create!(affiliation: affiliation)
+      person.loyalties.find_or_create_by(affiliation: affiliation)
     end
   end
   private_class_method :process_row

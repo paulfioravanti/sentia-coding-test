@@ -1,4 +1,5 @@
 class Person < ApplicationRecord
+  upsert_keys [:first_name, :species, :gender]
   include PGEnum(
     species: [
       "Astromech Droid",
