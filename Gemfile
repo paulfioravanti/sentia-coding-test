@@ -58,3 +58,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "activerecord-pg_enum", "~> 1.2"
 
 gem "active_record_upsert", "~> 0.10.0"
+
+gem "draper", "~> 4.0"

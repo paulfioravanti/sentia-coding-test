@@ -78,10 +78,10 @@
                   <% @people.each do |person| %>
                     <tr class="<%= cycle("bg-white", "bg-gray-50") %>">
                       <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                        <%= person.first_name %>
+                        <%= person.full_name %>
                       </td>
                       <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        <%= person.locations.map(&:name).join(", ") %>
+                        <%= person.location_names %>
                       </td>
                       <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                         <%= person.species %>
@@ -90,7 +90,7 @@
                         <%= person.gender %>
                       </td>
                       <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        <%= person.affiliations.map(&:name).sort.join(", ") %>
+                        <%= person.affiliation_names %>
                       </td>
                       <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                         <%= person.weapon %>
