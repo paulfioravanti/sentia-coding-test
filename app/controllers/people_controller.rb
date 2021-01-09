@@ -4,9 +4,11 @@ class PeopleController < ApplicationController
   def index
     people =
       Person
-        .full_list(params[:sort], sort_direction)
+        .includes(:locations, :affiliations)
+        .sorted_order(params[:sort], sort_direction)
         .search(params[:search])
         .page(params[:page])
+
     @people = PersonDecorator.decorate_collection(people)
   end
 

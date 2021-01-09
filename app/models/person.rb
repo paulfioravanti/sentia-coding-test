@@ -1,5 +1,15 @@
 class Person < ApplicationRecord
   DEFAULT_SORT_COLUMN = "first_name".freeze
+  SEARCH_QUERY =
+    "prefix ILIKE :search "\
+    "OR first_name ILIKE :search "\
+    "OR last_name ILIKE :search "\
+    "OR suffix ILIKE :search "\
+    "OR species::text ILIKE :search "\
+    "OR gender::text ILIKE :search "\
+    "OR weapon::text ILIKE :search "\
+    "OR vehicle::text ILIKE :search".freeze
+  private_constant :SEARCH_QUERY
 
   upsert_keys [:first_name, :species, :gender]
   include PGEnum(
@@ -40,25 +50,14 @@ class Person < ApplicationRecord
 
   def self.search(search)
     if search
-      where(
-        "prefix ILIKE :search "\
-        "OR first_name ILIKE :search "\
-        "OR last_name ILIKE :search "\
-        "OR suffix ILIKE :search "\
-        "OR species::text ILIKE :search "\
-        "OR gender::text ILIKE :search "\
-        "OR weapon::text ILIKE :search "\
-        "OR vehicle::text ILIKE :search",
-        search: "%#{search}%"
-      )
+      where(SEARCH_QUERY, search: "%#{search}%")
     else
       all
     end
   end
 
-  def self.full_list(sort_param, sort_direction)
-    includes(:locations, :affiliations)
-      .order("#{sort_column(sort_param)}": sort_direction)
+  def self.sorted_order(sort_param, sort_direction)
+    order("#{sort_column(sort_param)}": sort_direction)
   end
 
   def self.sort_column(sort_param)
