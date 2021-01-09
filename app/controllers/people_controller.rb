@@ -2,7 +2,7 @@ class PeopleController < ApplicationController
   helper_method :sort_column
 
   def index
-    people = Person.full_list(params[:sort], sort_direction)
+    people = Person.full_list(params[:sort], sort_direction).page(params[:page])
     @people = PersonDecorator.decorate_collection(people)
   end
 

@@ -60,3 +60,5 @@ gem "activerecord-pg_enum", "~> 1.2"
 gem "active_record_upsert", "~> 0.10.0"
 
 gem "draper", "~> 4.0"
+
+gem "kaminari", "~> 1.2"
