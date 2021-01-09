@@ -9,7 +9,11 @@ class PeopleController < ApplicationController
         .search(params[:search])
         .page(params[:page])
 
-    @people = PersonDecorator.decorate_collection(people)
+    @people =
+      PersonDecorator.decorate_collection(
+        people,
+        context: { sort_column: sort_column, params: params }
+      )
   end
 
   private
