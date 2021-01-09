@@ -1,4 +1,7 @@
 class PeopleController < ApplicationController
+  DEFAULT_SORT_COLUMN = "first_name".freeze
+  private_constant :DEFAULT_SORT_COLUMN
+
   helper_method :sort_column, :sort_direction
 
   def index
@@ -13,10 +16,16 @@ class PeopleController < ApplicationController
   private
 
   def sort_column
-    Person.column_names.include?(params[:sort]) ? params[:sort] : "first_name"
+    column = params[:sort]
+    Person.column_names.include?(column) ? column : DEFAULT_SORT_COLUMN
   end
 
   def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    direction = params[:direction]
+    if Rails.configuration.sort_directions.include?(direction)
+      direction
+    else
+      Rails.configuration.ascending
+    end
   end
 end
