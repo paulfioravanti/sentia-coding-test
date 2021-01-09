@@ -11,7 +11,6 @@ class Person < ApplicationRecord
     "OR vehicle::text ILIKE :search".freeze
   private_constant :SEARCH_QUERY
 
-  upsert_keys [:first_name, :species, :gender]
   include PGEnum(
     species: [
       "Astromech Droid",

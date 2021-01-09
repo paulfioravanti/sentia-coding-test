@@ -24,7 +24,7 @@ module DataImporter
       locations = LocationsParser.parse(row)
       affiliations = AffiliationsParser.parse(row)
 
-      person = Person.upsert(person_attributes)
+      person = Person.find_or_create_by(person_attributes)
       locations.each do |location_name|
         location = Location.find_or_create_by(name: location_name)
         person.residences.find_or_create_by(location: location)

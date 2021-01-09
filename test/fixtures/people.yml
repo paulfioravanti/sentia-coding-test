@@ -159,7 +159,7 @@ boba:
 rey:
   prefix:
   first_name: Rey
-  last_name: Fett
+  last_name:
   suffix:
   species: Human
   gender: Female
