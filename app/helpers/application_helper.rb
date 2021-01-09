@@ -1,7 +1,6 @@
 module ApplicationHelper
   def link_to_sortable(column, title = nil)
     title ||= column.titleize
-    css_class = column == sort_column ? "current #{sort_direction}" : nil
     direction =
       if column == sort_column && sort_direction == Rails.configuration.ascending
         Rails.configuration.descending
@@ -10,7 +9,7 @@ module ApplicationHelper
       end
     link_to(
       title,
-      { sort: column, direction: direction },
+      params.permit(:sort, :direction, :page, :search).merge({ sort: column, direction: direction, page: nil }),
       { class: "hover:underline" }
     )
   end

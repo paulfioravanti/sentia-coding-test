@@ -38,6 +38,24 @@ class Person < ApplicationRecord
   has_many :residences
   has_many :locations, through: :residences
 
+  def self.search(search)
+    if search
+      where(
+        "prefix ILIKE :search "\
+        "OR first_name ILIKE :search "\
+        "OR last_name ILIKE :search "\
+        "OR suffix ILIKE :search "\
+        "OR species::text ILIKE :search "\
+        "OR gender::text ILIKE :search "\
+        "OR weapon::text ILIKE :search "\
+        "OR vehicle::text ILIKE :search",
+        search: "%#{search}%"
+      )
+    else
+      all
+    end
+  end
+
   def self.full_list(sort_param, sort_direction)
     includes(:locations, :affiliations)
       .order("#{sort_column(sort_param)}": sort_direction)
