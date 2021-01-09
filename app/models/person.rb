@@ -1,4 +1,6 @@
 class Person < ApplicationRecord
+  DEFAULT_SORT_COLUMN = "first_name".freeze
+
   upsert_keys [:first_name, :species, :gender]
   include PGEnum(
     species: [
@@ -35,4 +37,13 @@ class Person < ApplicationRecord
   has_many :affiliations, through: :loyalties
   has_many :residences
   has_many :locations, through: :residences
+
+  def self.full_list(sort_param, sort_direction)
+    includes(:locations, :affiliations)
+      .order("#{sort_column(sort_param)}": sort_direction)
+  end
+
+  def self.sort_column(sort_param)
+    column_names.include?(sort_param) ? sort_param : DEFAULT_SORT_COLUMN
+  end
 end
