@@ -17,10 +17,10 @@
     <div class="flex items-center justify-center h-screen">
       <div class="w-3/4">
         <% if flash[:success] %>
-          <%= render "success_message" %>
+          <%= render "success_message", message: flash[:success] %>
         <% end %>
         <% if flash[:error] %>
-          <%= render "error_message" %>
+          <%= render "error_message", message: flash[:error] %>
         <% end %>
         <%= yield %>
       </div>

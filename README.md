@@ -9,6 +9,8 @@ The application comes from a coding test, and I decided to take it on just
 because I felt like I had not created a Rails application from scratch for a
 while.
 
+Currently deployed [here][sentiacodingtest] using [Heroku][].
+
 ## Language Versions
 
 - [Ruby][] 3.0.0
@@ -236,6 +238,7 @@ possible, only using:
 [`@apply`]: https://tailwindcss.com/docs/functions-and-directives#apply
 [Darth]: https://starwars.fandom.com/wiki/Darth
 [Draper]: https://github.com/drapergem/draper
+[Heroku]: https://www.heroku.com
 [Hutt]: https://starwars.fandom.com/wiki/Hutt
 [Javascript]: https://developer.mozilla.org/en-US/docs/Web/JavaScript
 [Kaminari]: https://github.com/kaminari/kaminari
@@ -246,6 +249,7 @@ possible, only using:
 [Ruby]: https://www.ruby-lang.org/en/
 [Ruby on Rails]: https://rubyonrails.org/
 [sample-csv-link]: https://docs.google.com/spreadsheets/d/10c7r-kjdWM4L8kWK0nfE6JgHskzqp7DTF8MkUIo7-_o/edit?usp=sharing
+[sentiacodingtest]: http://sentiacodingtest.herokuapp.com/
 [Suffix]: https://en.wikipedia.org/wiki/Suffix_(name)
 [Tailwind CSS]: https://tailwindcss.com/
 [Tailwind UI]: https://tailwindui.com/
