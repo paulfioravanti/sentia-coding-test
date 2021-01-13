@@ -43,9 +43,13 @@ class Person < ApplicationRecord
   )
 
   has_many :loyalties
-  has_many :affiliations, through: :loyalties
+  has_many :affiliations,
+           ->{ order("affiliations.name ASC") },
+           through: :loyalties
   has_many :residences
-  has_many :locations, through: :residences
+  has_many :locations,
+           ->{ order("locations.name ASC") },
+           through: :residences
 
   def self.search(search)
     if search

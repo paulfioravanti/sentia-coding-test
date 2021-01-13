@@ -10,6 +10,6 @@ class PersonDecorator < Draper::Decorator
   end
 
   def affiliation_names
-    object.affiliations.map(&:name).sort.join(", ")
+    object.affiliations.map(&:name).join(", ")
   end
 end
