@@ -18,6 +18,7 @@ module PeopleSorter
 
   def column_value((person, sort_column))
     column_value = person.public_send(sort_column)
-    [column_value ? 0 : 1, column_value, column_value]
+    # NOTE: Doing this ensures that `nil` values stay at the bottom of lists.
+    [column_value ? 0 : 1, column_value]
   end
 end
