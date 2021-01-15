@@ -19,8 +19,10 @@ class Person < ApplicationRecord
     "OR first_name ILIKE :search "\
     "OR last_name ILIKE :search "\
     "OR suffix ILIKE :search "\
+    "OR locations.name::text ILIKE :search "\
     "OR species::text ILIKE :search "\
     "OR gender::text ILIKE :search "\
+    "OR affiliations.name::text ILIKE :search "\
     "OR weapon::text ILIKE :search "\
     "OR vehicle::text ILIKE :search".freeze
   private_constant :SEARCH_QUERY
@@ -66,7 +68,10 @@ class Person < ApplicationRecord
            through: :residences
 
   def self.search(search)
-    query = includes(:locations, :affiliations)
+    query =
+      includes(:locations, :affiliations)
+        .references(:locations, :affiliations)
+
     if search
       query.where(SEARCH_QUERY, search: "%#{search}%")
     else
