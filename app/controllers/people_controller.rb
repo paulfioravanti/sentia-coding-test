@@ -2,10 +2,7 @@ class PeopleController < ApplicationController
   helper_method :sort_column
 
   def index
-    people =
-      Person
-        .includes(:locations, :affiliations)
-        .search(params[:search])
+    people = Person.search(params[:search])
     sorted_people = PeopleSorter.sort(people, sort_column, sort_direction)
     paginated_people =
       Kaminari

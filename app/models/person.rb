@@ -66,10 +66,11 @@ class Person < ApplicationRecord
            through: :residences
 
   def self.search(search)
+    query = includes(:locations, :affiliations)
     if search
-      where(SEARCH_QUERY, search: "%#{search}%")
+      query.where(SEARCH_QUERY, search: "%#{search}%")
     else
-      all
+      query
     end
   end
 
