@@ -6,10 +6,10 @@ class PersonDecorator < Draper::Decorator
   end
 
   def location_names
-    object.locations.map(&:name).join(", ")
+    object.location_names.join(", ")
   end
 
   def affiliation_names
-    object.affiliations.map(&:name).join(", ")
+    object.affiliation_names.join(", ")
   end
 end

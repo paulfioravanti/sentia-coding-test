@@ -31,7 +31,8 @@
                   <%= @people.link_to_sortable "suffix" %>
                 </th>
                 <th scope="col" class="person-heading">
-                  Location
+                  <%= @people.link_to_sortable "first_location_name",
+                                               "Locations" %>
                 </th>
                 <th scope="col" class="person-heading">
                   <%= @people.link_to_sortable "species" %>
@@ -40,7 +41,8 @@
                   <%= @people.link_to_sortable "gender" %>
                 </th>
                 <th scope="col" class="person-heading">
-                  Affiliations
+                  <%= @people.link_to_sortable "first_affiliation_name",
+                                               "Affiliations" %>
                 </th>
                 <th scope="col" class="person-heading">
                   <%= @people.link_to_sortable "weapon" %>

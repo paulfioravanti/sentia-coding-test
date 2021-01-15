@@ -1,5 +1,19 @@
 class Person < ApplicationRecord
+  SORT_COLUMNS = %w(
+    prefix
+    first_name
+    last_name
+    suffix
+    first_location_name
+    species
+    gender
+    first_affiliation_name
+    weapon
+    vehicle
+  ).freeze
+  private_constant :SORT_COLUMNS
   DEFAULT_SORT_COLUMN = "first_name".freeze
+  private_constant :DEFAULT_SORT_COLUMN
   SEARCH_QUERY =
     "prefix ILIKE :search "\
     "OR first_name ILIKE :search "\
@@ -59,11 +73,23 @@ class Person < ApplicationRecord
     end
   end
 
-  def self.sorted_order(sort_param, sort_direction)
-    order("#{sort_column(sort_param)}": sort_direction)
+  def self.sort_column(sort_param)
+    SORT_COLUMNS.include?(sort_param) ? sort_param : DEFAULT_SORT_COLUMN
   end
 
-  def self.sort_column(sort_param)
-    column_names.include?(sort_param) ? sort_param : DEFAULT_SORT_COLUMN
+  def first_affiliation_name
+    affiliations.first.name
+  end
+
+  def affiliation_names
+    affiliations.map(&:name)
+  end
+
+  def first_location_name
+    locations.first.name
+  end
+
+  def location_names
+    locations.map(&:name)
   end
 end
