@@ -6,10 +6,11 @@ class PeopleController < ApplicationController
       Person
         .includes(:locations, :affiliations)
         .search(params[:search])
-        .to_a
-    sorted_people = sorted_order(people)
+    sorted_people = PeopleSorter.sort(people, sort_column, sort_direction)
     paginated_people =
-      Kaminari.paginate_array(sorted_people).page(params[:page])
+      Kaminari
+        .paginate_array(sorted_people)
+        .page(params[:page])
 
     @people =
       PersonDecorator.decorate_collection(
@@ -19,19 +20,6 @@ class PeopleController < ApplicationController
   end
 
   private
-
-  def sorted_order(people)
-    sorted_people =
-      people.sort_by do |person|
-        column_value = person.public_send(sort_column)
-        [column_value ? 0 : 1, column_value]
-      end
-    if sort_direction == Rails.configuration.descending
-      sorted_people.reverse
-    else
-      sorted_people
-    end
-  end
 
   def sort_column
     Person.sort_column(params[:sort])
