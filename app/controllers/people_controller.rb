@@ -5,9 +5,7 @@ class PeopleController < ApplicationController
     people = Person.search(params[:search])
     sorted_people = PeopleSorter.sort(people, sort_column, sort_direction)
     paginated_people =
-      Kaminari
-        .paginate_array(sorted_people)
-        .page(params[:page])
+      Kaminari.paginate_array(sorted_people).page(params[:page])
 
     @people =
       PersonDecorator.decorate_collection(
