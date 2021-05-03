@@ -24,6 +24,7 @@ git clone https://github.com/paulfioravanti/sentia-coding-test.git
 cd senta-coding-test
 bundle install
 bin/rails db:create db:migrate
+yarn
 ```
 
 ## Run
