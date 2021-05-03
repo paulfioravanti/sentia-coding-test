@@ -15,7 +15,8 @@ Currently deployed [here][sentiacodingtest] using [Heroku][].
 
 - [Ruby][] 3.0.1
 - Rails 6.1.3.1
-- [NodeJS][] 14.6.1
+- [NodeJS][] 14.6.1 (locked to version 14.x since it is the most [node-sass][]
+  currently [supports][node-sass supported environemtns])
 
 ## Setup
 
@@ -245,6 +246,8 @@ possible, only using:
 [Kaminari]: https://github.com/kaminari/kaminari
 [Knights of Ren]: https://starwars.fandom.com/wiki/Knights_of_Ren
 [munged]: https://en.wikipedia.org/wiki/Data_wrangling
+[node-sass]: https://github.com/sass/node-sass
+[node-sass supported environments]: https://github.com/sass/node-sass/releases/tag/v4.14.1
 [NodeJS]: https://nodejs.org/en/
 [pattern matching]: https://docs.ruby-lang.org/en/3.0.0/doc/syntax/pattern_matching_rdoc.html
 [Ruby]: https://www.ruby-lang.org/en/
