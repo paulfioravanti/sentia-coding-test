@@ -24,7 +24,7 @@ Currently deployed [here][sentiacodingtest] using [Heroku][].
 git clone https://github.com/paulfioravanti/sentia-coding-test.git
 cd senta-coding-test
 bundle install
-bin/rails db:create db:migrate
+bin/rails db:init
 yarn
 ```
 
