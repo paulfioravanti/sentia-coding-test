@@ -1,6 +1,9 @@
 require "csv"
 
 module DataImporter
+  REQUIRED_NUMBER_OF_FIELDS = 5
+  private_constant :REQUIRED_NUMBER_OF_FIELDS
+
   module_function
 
   def import(file)
@@ -21,27 +24,37 @@ module DataImporter
       end
 
       person_attributes = PersonParser.parse(row)
-      locations = LocationsParser.parse(row)
-      affiliations = AffiliationsParser.parse(row)
+      location_names = LocationsParser.parse(row)
+      affiliation_names = AffiliationsParser.parse(row)
 
       person = Person.find_or_create_by(person_attributes)
-      locations.each do |location_name|
-        location = Location.find_or_create_by(name: location_name)
-        person.residences.find_or_create_by(location: location)
-      end
-      affiliations.each do |affiliation_name|
-        affiliation = Affiliation.find_or_create_by(name: affiliation_name)
-        person.loyalties.find_or_create_by(affiliation: affiliation)
-      end
+      generate_locations(person, location_names)
+      generate_affiliations(person, affiliation_names)
     end
   end
   private_class_method :process_row
 
   def required_fields_blank?(row)
     row
-      .first(5)
-      .map(&:second)
+      .first(REQUIRED_NUMBER_OF_FIELDS)
+      .map(&:second) # first value is the CSV header, second is the value
       .any?(&:blank?)
   end
   private_class_method :required_fields_blank?
+
+  def generate_locations(person, location_names)
+    location_names.each do |location_name|
+      location = Location.find_or_create_by(name: location_name)
+      person.residences.find_or_create_by(location: location)
+    end
+  end
+  private_class_method :generate_locations
+
+  def generate_affiliations(person, affiliation_names)
+    affiliation_names.each do |affiliation_name|
+      affiliation = Affiliation.find_or_create_by(name: affiliation_name)
+      person.loyalties.find_or_create_by(affiliation: affiliation)
+    end
+  end
+  private_class_method :generate_affiliations
 end

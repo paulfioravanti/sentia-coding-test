@@ -1,4 +1,9 @@
 class PeopleDecorator < Draper::CollectionDecorator
+  ASCENDING = Rails.configuration.ascending
+  private_constant :ASCENDING
+  DESCENDING = Rails.configuration.descending
+  private_constant :DESCENDING
+
   delegate :current_page,
            :total_pages,
            :limit_value,
@@ -9,30 +14,22 @@ class PeopleDecorator < Draper::CollectionDecorator
 
   def link_to_sortable(column, title = nil)
     title ||= column.titleize
-    direction = determine_direction(column)
-    column_params = generate_params(column, direction)
+    column_params = generate_params(column)
 
     helpers.link_to(title, column_params, { class: "hover:underline" })
   end
 
   private
 
-  def determine_direction(column)
-    if current_column_ascending?(column)
-      Rails.configuration.descending
-    else
-      Rails.configuration.ascending
-    end
-  end
+  def generate_params(column)
+    direction = current_column_ascending?(column) ? DESCENDING : ASCENDING
 
-  def current_column_ascending?(column)
-    column == context[:sort_column] &&
-      helpers.sort_direction == Rails.configuration.ascending
-  end
-
-  def generate_params(column, direction)
     context[:params]
       .permit(:sort, :direction, :page, :search)
       .merge({ sort: column, direction: direction, page: nil })
+  end
+
+  def current_column_ascending?(column)
+    column == context[:sort_column] && helpers.sort_direction == ASCENDING
   end
 end
