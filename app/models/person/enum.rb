@@ -29,4 +29,5 @@ class Person
       "X-wing Starfighter"
     ].freeze
   end
+  private_constant :Enum
 end

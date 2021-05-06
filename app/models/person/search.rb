@@ -19,4 +19,5 @@ class Person
       query.where(SEARCH_QUERY, search: "%#{search}%")
     end
   end
+  private_constant :Search
 end

@@ -22,4 +22,5 @@ class Person
       SORT_COLUMNS.include?(sort_param) ? sort_param : DEFAULT_SORT_COLUMN
     end
   end
+  private_constant :Sort
 end
