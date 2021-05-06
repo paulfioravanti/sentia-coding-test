@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module DataImporter
   module EnumFieldParser
     INVALID_CHARACTERS = /[^a-z1-9\-' ]/i

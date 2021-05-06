@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PeopleDecorator < Draper::CollectionDecorator
   ASCENDING = Rails.configuration.ascending
   private_constant :ASCENDING

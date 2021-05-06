@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module DataImporter
   module AffiliationsParser
     VALID_AFFILIATIONS = Affiliation.names.values.freeze

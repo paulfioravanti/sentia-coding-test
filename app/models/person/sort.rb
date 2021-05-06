@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Person
   module Sort
     SORT_COLUMNS = %w[
@@ -13,7 +15,7 @@ class Person
       vehicle
     ].freeze
     private_constant :SORT_COLUMNS
-    DEFAULT_SORT_COLUMN = "first_name".freeze
+    DEFAULT_SORT_COLUMN = "first_name"
     private_constant :DEFAULT_SORT_COLUMN
 
     module_function

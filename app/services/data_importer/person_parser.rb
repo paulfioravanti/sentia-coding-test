@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module DataImporter
   module PersonParser
     VALID_SPECIES = Person.species.values.freeze

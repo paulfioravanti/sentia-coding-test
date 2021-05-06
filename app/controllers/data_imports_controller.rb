@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DataImportsController < ApplicationController
   def create
     DataImporter.import(params[:file])

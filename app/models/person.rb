@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Person < ApplicationRecord
   include PGEnum(
     species: Enum::SPECIES,

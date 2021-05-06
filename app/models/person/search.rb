@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Person
   module Search
     SEARCH_QUERY =
@@ -10,7 +12,7 @@ class Person
       "OR gender::text ILIKE :search "\
       "OR affiliations.name::text ILIKE :search "\
       "OR weapon::text ILIKE :search "\
-      "OR vehicle::text ILIKE :search".freeze
+      "OR vehicle::text ILIKE :search"
     private_constant :SEARCH_QUERY
 
     module_function

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :db do
   task init: :environment do
     Rake::Task["db:drop"].invoke

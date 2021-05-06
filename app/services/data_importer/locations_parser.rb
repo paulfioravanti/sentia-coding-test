@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module DataImporter
   module LocationsParser
     VALID_LOCATIONS = Location.names.values.freeze

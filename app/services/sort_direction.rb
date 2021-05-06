@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module SortDirection
   SORT_DIRECTIONS = Rails.configuration.sort_directions
   private_constant :SORT_DIRECTIONS
