@@ -9,7 +9,7 @@ class Person
       "Unknown",
       "Wookie"
     ].freeze
-    GENDERS = %w(Male Female Other).freeze
+    GENDERS = %w[Male Female Other].freeze
     WEAPONS = [
       "Blaster",
       "Blaster Pistol",

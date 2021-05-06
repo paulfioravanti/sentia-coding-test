@@ -3,7 +3,7 @@ class DataImportsController < ApplicationController
     DataImporter.import(params[:file])
     redirect_to root_url,
                 flash: { success: "Data imported successfully!" }
-  rescue
+  rescue StandardError
     redirect_to root_url,
                 flash: { error: "There were errors importing the data." }
   end

@@ -17,10 +17,7 @@ module DataImporter
         throw :next
       end
 
-      enum_fields =
-        row
-          .values_at("Species", "Weapon", "Vehicle")
-          .zip([VALID_SPECIES, VALID_WEAPONS, VALID_VEHICLES])
+      enum_fields = generate_enum_fields(row)
       species, weapon, vehicle =
         EnumFieldParser.parse_single_value_fields(enum_fields)
       if species.blank?
@@ -61,16 +58,23 @@ module DataImporter
 
     def parse_gender(gender)
       case gender
-        in "Male" | "Female" | "Other" => gender
-        gender
-        in /\Am\z/i
-        "Male"
-        in /\Af\z/i
-        "Female"
+      in "Male" | "Female" | "Other" => gender
+      gender
+      in /\Am\z/i
+      "Male"
+      in /\Af\z/i
+      "Female"
       else
         nil
       end
     end
     private_class_method :parse_gender
+
+    def generate_enum_fields(row)
+      row
+        .values_at("Species", "Weapon", "Vehicle")
+        .zip([VALID_SPECIES, VALID_WEAPONS, VALID_VEHICLES])
+    end
+    private_class_method :generate_enum_fields
   end
 end

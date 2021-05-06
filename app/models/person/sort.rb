@@ -1,6 +1,6 @@
 class Person
   module Sort
-    SORT_COLUMNS = %w(
+    SORT_COLUMNS = %w[
       prefix
       first_name
       last_name
@@ -11,7 +11,7 @@ class Person
       first_affiliation_name
       weapon
       vehicle
-    ).freeze
+    ].freeze
     private_constant :SORT_COLUMNS
     DEFAULT_SORT_COLUMN = "first_name".freeze
     private_constant :DEFAULT_SORT_COLUMN

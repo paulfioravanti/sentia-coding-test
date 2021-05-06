@@ -1,11 +1,11 @@
 module DataImporter
   module EnumFieldParser
-    INVALID_CHARACTERS =/[^a-z1-9\-\' ]/i
+    INVALID_CHARACTERS = /[^a-z1-9\-' ]/i
     private_constant :INVALID_CHARACTERS
     MISSPELLINGS = {
       "Yoda's Hutt" => "Yoda's Hut",
       "Naboo N-1 Starfigher" => "Naboo N-1 Starfighter"
-    }
+    }.freeze
     private_constant :MISSPELLINGS
 
     module_function

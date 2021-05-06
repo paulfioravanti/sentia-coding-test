@@ -24,12 +24,9 @@ module DataImporter
       end
 
       person_attributes = PersonParser.parse(row)
-      location_names = LocationsParser.parse(row)
-      affiliation_names = AffiliationsParser.parse(row)
-
       person = Person.find_or_create_by(person_attributes)
-      generate_locations(person, location_names)
-      generate_affiliations(person, affiliation_names)
+      generate_locations(row, person)
+      generate_affiliations(row, person)
     end
   end
   private_class_method :process_row
@@ -42,7 +39,8 @@ module DataImporter
   end
   private_class_method :required_fields_blank?
 
-  def generate_locations(person, location_names)
+  def generate_locations(row, person)
+    location_names = LocationsParser.parse(row)
     location_names.each do |location_name|
       location = Location.find_or_create_by(name: location_name)
       person.residences.find_or_create_by(location: location)
@@ -50,7 +48,8 @@ module DataImporter
   end
   private_class_method :generate_locations
 
-  def generate_affiliations(person, affiliation_names)
+  def generate_affiliations(row, person)
+    affiliation_names = AffiliationsParser.parse(row)
     affiliation_names.each do |affiliation_name|
       affiliation = Affiliation.find_or_create_by(name: affiliation_name)
       person.loyalties.find_or_create_by(affiliation: affiliation)
