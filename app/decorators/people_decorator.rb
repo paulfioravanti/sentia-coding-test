@@ -14,11 +14,13 @@ class PeopleDecorator < Draper::CollectionDecorator
            :offset_value,
            :last_page?
 
-  def link_to_sortable(column, title = nil)
+  def sortable_header(column, title = nil)
     title ||= column.titleize
     column_params = generate_params(column)
 
-    helpers.link_to(title, column_params, { class: "hover:underline" })
+    helpers.content_tag(:th, scope: "col", class: "person-heading") do
+      helpers.link_to(title, column_params, { class: "hover:underline" })
+    end
   end
 
   private
