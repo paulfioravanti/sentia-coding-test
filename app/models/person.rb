@@ -29,6 +29,10 @@ class Person < ApplicationRecord
     Sort.column(sort_param)
   end
 
+  def self.sort_columns
+    Sort::SORT_COLUMNS
+  end
+
   def first_affiliation_name
     affiliations.first.name
   end

@@ -32,6 +32,7 @@ class PeopleController < ApplicationController
       paginated_people,
       context: {
         sort_column: sort_column,
+        sort_columns: Person.sort_columns,
         sort_direction: sort_direction,
         params: params
       }

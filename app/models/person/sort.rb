@@ -14,7 +14,6 @@ class Person
       weapon
       vehicle
     ].freeze
-    private_constant :SORT_COLUMNS
     DEFAULT_SORT_COLUMN = "first_name"
     private_constant :DEFAULT_SORT_COLUMN
 

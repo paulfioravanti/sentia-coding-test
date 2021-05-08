@@ -18,18 +18,7 @@
           <table class="min-w-full divide-y divide-gray-200">
             <thead class="bg-gray-50">
               <tr>
-                <%= @people.sortable_header "prefix" %>
-                <%= @people.sortable_header "first_name" %>
-                <%= @people.sortable_header "last_name" %>
-                <%= @people.sortable_header "suffix" %>
-                <%= @people.sortable_header "first_location_name",
-                                            "Locations" %>
-                <%= @people.sortable_header "species" %>
-                <%= @people.sortable_header "gender" %>
-                <%= @people.sortable_header "first_affiliation_name",
-                                            "Affiliations" %>
-                <%= @people.sortable_header "weapon" %>
-                <%= @people.sortable_header "vehicle" %>
+                <%= @people.sortable_headers %>
               </tr>
             </thead>
             <tbody>

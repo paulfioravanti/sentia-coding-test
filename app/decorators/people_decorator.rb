@@ -14,8 +14,16 @@ class PeopleDecorator < Draper::CollectionDecorator
            :offset_value,
            :last_page?
 
-  def sortable_header(column, title = nil)
-    title ||= column.titleize
+  def sortable_headers
+    context[:sort_columns]
+      .map(&method(:sortable_header))
+      .then(&helpers.method(:safe_join))
+  end
+
+  private
+
+  def sortable_header(column)
+    title = header_title(column)
     column_params = generate_params(column)
 
     helpers.content_tag(:th, scope: "col", class: "person-heading") do
@@ -23,7 +31,13 @@ class PeopleDecorator < Draper::CollectionDecorator
     end
   end
 
-  private
+  def header_title(column)
+    case column
+    when "first_location_name" then "Locations"
+    when "first_affiliation_name" then "Affiliations"
+    else column.titleize
+    end
+  end
 
   def generate_params(column)
     direction = current_column_ascending?(column) ? DESCENDING : ASCENDING
