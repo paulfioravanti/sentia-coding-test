@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class PeopleController < ApplicationController
-  helper_method :sort_column, :sort_direction
-
   def index
     @people =
       Person.search(params[:search])
@@ -32,7 +30,11 @@ class PeopleController < ApplicationController
   def decorate_people(paginated_people)
     PersonDecorator.decorate_collection(
       paginated_people,
-      context: { sort_column: sort_column, params: params }
+      context: {
+        sort_column: sort_column,
+        sort_direction: sort_direction,
+        params: params
+      }
     )
   end
 end

@@ -32,6 +32,6 @@ class PeopleDecorator < Draper::CollectionDecorator
   end
 
   def current_column_ascending?(column)
-    column == context[:sort_column] && helpers.sort_direction == ASCENDING
+    column == context[:sort_column] && context[:sort_direction] == ASCENDING
   end
 end
