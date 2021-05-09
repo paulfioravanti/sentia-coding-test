@@ -11,16 +11,16 @@ class PeopleController < ApplicationController
 
   private
 
+  def sort_people(people)
+    PeopleSorter.sort(people, sort_column, sort_direction)
+  end
+
   def sort_column
     @sort_column ||= Person.sort_column(params[:sort])
   end
 
   def sort_direction
     @sort_direction ||= SortDirection.determine(params[:direction])
-  end
-
-  def sort_people(people)
-    PeopleSorter.sort(people, sort_column, sort_direction)
   end
 
   def paginate_people(sorted_people)
