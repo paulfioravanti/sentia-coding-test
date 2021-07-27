@@ -29,7 +29,7 @@ class CreatePeople < ActiveRecord::Migration[6.1]
         "Naboo N-1 Starfighter",
         "Rey''s Speeder",
         "Slave 1",
-        "Tiefighter",
+        "TIE Fighter",
         "X-wing Starfighter"
       ]
     )

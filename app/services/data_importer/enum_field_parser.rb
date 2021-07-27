@@ -7,7 +7,8 @@ module DataImporter
     MISSPELLINGS = {
       "Yoda's Hutt" => "Yoda's Hut",
       "Naboo N-1 Starfigher" => "Naboo N-1 Starfighter",
-      "Jabba's Sale Barge" => "Jabba's Sail Barge"
+      "Jabba's Sale Barge" => "Jabba's Sail Barge",
+      "Tiefighter" => "TIE Fighter"
     }.freeze
     private_constant :MISSPELLINGS
 
