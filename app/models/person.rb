@@ -9,18 +9,19 @@ class Person < ApplicationRecord
   )
 
   has_many :loyalties
-  has_many :affiliations,
-           -> { order("affiliations.name ASC") },
-           through: :loyalties
+  has_many :affiliations, -> { order(:name) }, through: :loyalties
   has_many :residences
-  has_many :locations,
-           -> { order("locations.name ASC") },
-           through: :residences
+  has_many :locations, -> { order(:name) }, through: :residences
 
   def self.search(search)
+    # NOTE: `includes`/`references` combo cannot be used since it seems
+    # to ignore the ordering clause in the has_many relationships.
+    # So, we have to use the more query-inefficient `preload`:(
+    # More info at:
+    # https://github.com/rails/rails/issues/6769
+    # https://stackoverflow.com/a/11947303/567863
     query =
-      includes(:locations, :affiliations)
-        .references(:locations, :affiliations)
+      preload(:locations, :affiliations)
 
     search ? Search.query(query, search) : query
   end
