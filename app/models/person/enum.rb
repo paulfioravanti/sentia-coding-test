@@ -21,7 +21,7 @@ class Person
     ].freeze
     VEHICLES = [
       "Gungan Bongo Submarine",
-      "Jabba's Sale Barge",
+      "Jabba's Sail Barge",
       "Jedi Starfighter",
       "Millennium Falcon",
       "Naboo N-1 Starfighter",

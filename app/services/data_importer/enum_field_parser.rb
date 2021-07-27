@@ -6,7 +6,8 @@ module DataImporter
     private_constant :INVALID_CHARACTERS
     MISSPELLINGS = {
       "Yoda's Hutt" => "Yoda's Hut",
-      "Naboo N-1 Starfigher" => "Naboo N-1 Starfighter"
+      "Naboo N-1 Starfigher" => "Naboo N-1 Starfighter",
+      "Jabba's Sale Barge" => "Jabba's Sail Barge"
     }.freeze
     private_constant :MISSPELLINGS
 

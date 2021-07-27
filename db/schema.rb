@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2021_01_07_052346) do
   create_enum "location_name", ["Alderaan", "Chandrila", "Cloud City", "Corellia", "Death Star", "Haruun Kal", "Jakku", "Kamino", "Kashyyk", "Naboo", "Stewjon", "Tatooine", "Yoda's Hut"]
   create_enum "person_gender", ["Male", "Female", "Other"]
   create_enum "person_species", ["Astromech Droid", "Gungan", "Human", "Hutt", "Protocol Droid", "Unknown", "Wookie"]
-  create_enum "person_vehicle", ["Gungan Bongo Submarine", "Jabba's Sale Barge", "Jedi Starfighter", "Millennium Falcon", "Naboo N-1 Starfighter", "Rey's Speeder", "Slave 1", "Tiefighter", "X-wing Starfighter"]
+  create_enum "person_vehicle", ["Gungan Bongo Submarine", "Jabba's Sail Barge", "Jedi Starfighter", "Millennium Falcon", "Naboo N-1 Starfighter", "Rey's Speeder", "Slave 1", "Tiefighter", "X-wing Starfighter"]
   create_enum "person_weapon", ["Blaster", "Blaster Pistol", "Bowcaster", "Energy Ball", "Lightsaber"]
 
   create_table "affiliations", force: :cascade do |t|
