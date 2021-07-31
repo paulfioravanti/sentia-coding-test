@@ -18,10 +18,11 @@ class Person < ApplicationRecord
 
   def self.search(search, column, direction)
     query =
-      eager_load(:locations, :affiliations)
-        .joins(first_affiliation_name)
-        .joins(first_location_name)
+      preload(:locations, :affiliations)
+        .joins(:locations, :affiliations)
+        .then(&Lateral.method(:join_first_association_names))
         .order(column => direction, Sort::DEFAULT_SORT_COLUMN => direction)
+        .group(:id, :first_affiliation_name, :first_location_name)
 
     search ? Search.query(query, search) : query
   end
@@ -32,24 +33,6 @@ class Person < ApplicationRecord
 
   def self.sort_columns
     Sort::SORT_COLUMNS
-  end
-
-  private_class_method def self.first_affiliation_name
-    first_affiliation_name_query = Affiliation.first_name_query
-    <<~SQL.squish
-      JOIN LATERAL (#{first_affiliation_name_query})
-      AS affiliation(first_affiliation_name)
-      ON true
-    SQL
-  end
-
-  private_class_method def self.first_location_name
-    first_location_name_query = Location.first_name_query
-    <<~SQL.squish
-      JOIN LATERAL (#{first_location_name_query})
-      AS location(first_location_name)
-      ON true
-    SQL
   end
 
   def affiliation_names
