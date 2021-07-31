@@ -61,11 +61,11 @@ module DataImporter
     def parse_gender(gender)
       case gender
       in "Male" | "Female" | "Other" => gender
-      gender
+        gender
       in /\Am\z/i
-      "Male"
+        "Male"
       in /\Af\z/i
-      "Female"
+        "Female"
       else
         nil
       end
