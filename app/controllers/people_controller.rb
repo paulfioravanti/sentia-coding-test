@@ -4,7 +4,7 @@ class PeopleController < ApplicationController
   def index
     @people =
       Person.search(params[:search], sort_column, sort_direction)
-        .then(&method(:paginate_people))
+        .page(params[:page])
         .then(&method(:decorate_people))
   end
 
@@ -16,10 +16,6 @@ class PeopleController < ApplicationController
 
   def sort_direction
     @sort_direction ||= SortDirection.determine(params[:direction])
-  end
-
-  def paginate_people(sorted_people)
-    Paginator.paginate_array(sorted_people, params[:page])
   end
 
   def decorate_people(paginated_people)
