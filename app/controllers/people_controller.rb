@@ -3,17 +3,12 @@
 class PeopleController < ApplicationController
   def index
     @people =
-      Person.search(params[:search])
-        .then(&method(:sort_people))
+      Person.search(params[:search], sort_column, sort_direction)
         .then(&method(:paginate_people))
         .then(&method(:decorate_people))
   end
 
   private
-
-  def sort_people(people)
-    PeopleSorter.sort(people, sort_column, sort_direction)
-  end
 
   def sort_column
     @sort_column ||= Person.sort_column(params[:sort])

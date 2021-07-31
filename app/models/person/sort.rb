@@ -15,7 +15,6 @@ class Person
       vehicle
     ].freeze
     DEFAULT_SORT_COLUMN = "first_name"
-    private_constant :DEFAULT_SORT_COLUMN
 
     module_function
 
