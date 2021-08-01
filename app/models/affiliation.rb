@@ -18,12 +18,11 @@ class Affiliation < ApplicationRecord
   has_many :loyalties
   has_many :people, through: :loyalties
 
-  def self.first_name_query
+  def self.first_name
     joins(:loyalties)
       .where("loyalties.person_id = people.id")
       .order(:name)
       .limit(1)
       .select(:name)
-      .to_sql
   end
 end

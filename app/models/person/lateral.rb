@@ -12,7 +12,7 @@ class Person
 
     private_class_method def first_affiliation_name
       first_association_name(
-        Affiliation.first_name_query,
+        Affiliation.first_name,
         :affiliation,
         :first_affiliation_name
       )
@@ -20,7 +20,7 @@ class Person
 
     private_class_method def first_location_name
       first_association_name(
-        Location.first_name_query,
+        Location.first_name,
         :location,
         :first_location_name
       )
@@ -30,7 +30,7 @@ class Person
       query, table_name, field_name
     )
       <<~SQL.squish
-        JOIN LATERAL (#{query})
+        JOIN LATERAL (#{query.to_sql})
         AS #{table_name}(#{field_name})
         ON true
       SQL

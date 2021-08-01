@@ -23,12 +23,11 @@ class Location < ApplicationRecord
   has_many :residences
   has_many :people, through: :residences
 
-  def self.first_name_query
+  def self.first_name
     joins(:residences)
       .where("residences.person_id = people.id")
       .order(:name)
       .limit(1)
       .select(:name)
-      .to_sql
   end
 end
