@@ -26,12 +26,10 @@ class Person
       )
     end
 
-    private_class_method def first_association_name(
-      query, table_name, field_name
-    )
+    private_class_method def first_association_name(query, table_alias, field)
       <<~SQL.squish
         JOIN LATERAL (#{query.to_sql})
-        AS #{table_name}(#{field_name})
+        AS #{table_alias}(#{field})
         ON true
       SQL
     end
