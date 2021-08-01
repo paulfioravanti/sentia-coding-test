@@ -33,6 +33,8 @@ group :development, :test do
 end
 
 group :development do
+  # Help to kill N+1 queries and unused eager loading
+  gem "bullet", "~> 6.1"
   gem "listen", "~> 3.3"
   # Display performance information such as SQL time and flame graphs for each
   # request in your browser.
