@@ -20,7 +20,10 @@ class Person
     module_function
 
     def query(query, search)
-      query.where(SEARCH_QUERY, search: "%#{search}%")
+      query
+        .joins(:affiliations, :locations)
+        .where(SEARCH_QUERY, search: "%#{search}%")
+        .group(:id, :first_affiliation_name, :first_location_name)
     end
   end
   private_constant :Search
