@@ -15,7 +15,7 @@ Currently deployed [here][sentiacodingtest] using [Heroku][].
 
 ## Language Versions
 
-- [Ruby][] 3.0.1
+- [Ruby][] 3.0.2
 - Rails 6.1.4
 - [NodeJS][] 14.6.1 (locked to version 14.x since it is the latest [node-sass][]
   currently [supports][node-sass supported environments])
