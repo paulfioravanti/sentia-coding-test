@@ -18,11 +18,15 @@ class Person < ApplicationRecord
 
   def self.search(search, column, direction)
     query =
+      # NOTE: preload needed to be used over `includes`/`references` combination
+      # due to losing ordering clause on `locations` and `affiliations`
+      # associations. More info at:
+      # https://github.com/rails/rails/issues/6769
+      # https://github.com/rails/rails/issues/8663
+      # https://stackoverflow.com/a/11947303/567863
       preload(:locations, :affiliations)
-        .joins(:locations, :affiliations)
         .then(&Lateral.method(:join_first_association_names))
         .order(column => direction, Sort::DEFAULT_SORT_COLUMN => direction)
-        .group(:id, :first_affiliation_name, :first_location_name)
 
     search ? Search.query(query, search) : query
   end
