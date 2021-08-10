@@ -24,10 +24,10 @@ class PeopleDecorator < Draper::CollectionDecorator
 
   def sortable_header(column)
     title = header_title(column)
-    column_params = generate_params(column)
+    column_header_params = generate_header_params(column)
 
     helpers.content_tag(:th, scope: "col", class: "person-heading") do
-      helpers.link_to(title, column_params, { class: "hover:underline" })
+      helpers.link_to(title, column_header_params, { class: "hover:underline" })
     end
   end
 
@@ -39,11 +39,10 @@ class PeopleDecorator < Draper::CollectionDecorator
     end
   end
 
-  def generate_params(column)
+  def generate_header_params(column)
     direction = current_column_ascending?(column) ? DESCENDING : ASCENDING
 
-    context[:params]
-      .permit(:sort, :direction, :page, :search)
+    context[:header_params]
       .merge({ sort: column, direction: direction, page: nil })
   end
 
