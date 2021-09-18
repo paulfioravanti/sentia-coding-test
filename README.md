@@ -9,9 +9,14 @@ The application comes from a coding test, and I decided to take it on just
 because I felt like I had not created a Rails application from scratch for a
 while.
 
-I wrote more about this in a blog post, _[Coding Test Review: Sentia][]_.
+The application is currently deployed [here][sentiacodingtest] using [Heroku][].
 
-Currently deployed [here][sentiacodingtest] using [Heroku][].
+## Blog Post
+
+I wrote more about this codebase, and my rationale for all the major development
+decisions, in the following blog post:
+
+- _[Coding Test Review: Sentia][]_
 
 ## Language Versions
 
