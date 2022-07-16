@@ -20,14 +20,14 @@ decisions, in the following blog post:
 
 ## Language Versions
 
-- [Ruby][] 3.0.2
-- Rails 6.1.4
+- [Ruby][] 3.1.2
+- Rails 6.1.6
 - [NodeJS][] 14.6.1 (locked to version 14.x since it is the latest [node-sass][]
   currently [supports][node-sass supported environments])
 
 ## Setup
 
-```sh
+```console
 git clone https://github.com/paulfioravanti/sentia-coding-test.git
 cd senta-coding-test
 bundle install
@@ -37,7 +37,7 @@ yarn
 
 ## Run
 
-```sh
+```console
 bin/rails server
 ```
 
@@ -51,7 +51,7 @@ an empty table.
 The original CSV file containing the data that the application must be able to
 import can be found at:
 
-```
+```console
 test/fixtures/files/SentiaCodingTestData.csv
 ```
 
@@ -64,7 +64,7 @@ During development, I also recreated the seed data in Rails fixtures files,
 which can be found under the `test/fixtures` directory. These can be loaded
 into the database on the command line:
 
-```sh
+```console
 bin/rails db:fixtures:load
 ```
 
@@ -73,10 +73,18 @@ bin/rails db:fixtures:load
 I often tested the logic in the file importer modules themselves via the Rails
 console, so the data can also be imported in the following way:
 
-```sh
+```console
 bin/rails console
 irb(main):001:0> file = File.open("#{Rails.root}/test/fixtures/files/SentiaCodingTestData.csv")
 irb(main):002:0> DataImporter.import(file)
+```
+
+## Deploy
+
+Push to [Heroku][] with the following command:
+
+```console
+git push heroku main
 ```
 
 ## Tests
